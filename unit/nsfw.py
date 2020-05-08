@@ -23,13 +23,13 @@ def load_images(image_paths, image_size):
     loaded_images = []
     loaded_image_paths = []
 
-    if os.path.isdir(image_paths):
-        print('wut')
-        parent = image_paths
-        image_paths = [join(parent, f) for f in listdir(image_paths) if isfile(join(parent, f))]
-    else:
-        print('wut1')
-        image_paths = [image_paths]
+    # if os.path.isdir(image_paths):
+    #     print('wut')
+    #     parent = image_paths
+    #     image_paths = [join(parent, f) for f in listdir(image_paths) if isfile(join(parent, f))]
+    # else:
+    #     print('wut1')
+    #     image_paths = [image_paths]
 
     for i, img_path in enumerate(image_paths):
         try:
@@ -74,4 +74,10 @@ def main(image_path):
         for _ in range(len(predicts[i])):
             list[i]["probability"][predicts[i][_]] = str(probs[i][_])
 
-    return json.dumps(list, sort_keys=True, indent=2)
+    return list
+
+
+def path_split(image_paths, n):
+    parent = image_paths
+    items = [join(parent, f) for f in listdir(image_paths) if isfile(join(parent, f))]
+    return [items[i:i + n] for i in range(0, len(items), n)]
