@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'model'
 ]
 
 MIDDLEWARE = [
@@ -76,8 +77,12 @@ WSGI_APPLICATION = 'nsfw_serve.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.mysql',  # 数据库引擎
+        'NAME': 'beauty_admin',  # 数据库名
+        'USER': 'root',  # 账号
+        'PASSWORD': 'root',  # 密码
+        'HOST': '127.0.0.1',  # HOST
+        'POST': 3306,  # 端口
     }
 }
 
