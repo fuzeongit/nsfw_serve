@@ -10,7 +10,8 @@ import requests
 
 
 def index(request):
-    paths_2d = path_split(request.GET.get("path"), 20)
+    # paths_2d = path_split(request.GET.get("path"), 20)
+    paths_2d = path_split("D:/my/图片/p/restrict", 20)
     for i, image_paths in enumerate(paths_2d):
         for j, item in enumerate(main(image_paths)):
             nsfw_level = NsfwLevel()
